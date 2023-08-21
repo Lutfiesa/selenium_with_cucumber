@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.javaoop'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task greetingTask {
+
+    description("")
+    doLast {
+//        String name = project.findProperty('name') ? project.property('name') : 'Gradle User'
+        def name = project.findProperty('name') ?: 'Gradle User'
+        println "Hello, $name! Welcome to Gradle World!"
+    }
+}
+
+task customGreetingTask {
+    description "Prints a custom greeting message"
+
+    doLast {
+        def studentName = project.findProperty('student') ?: 'Default Student'
+        println "Hello Jayjay, My Name is $studentName"
+    }
+}
